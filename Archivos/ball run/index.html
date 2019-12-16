@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Ballrun</title>
+    <meta charset="utf-8">
+     <script type="text/javascript" src="../libs/three.min.js"></script>
+    <link rel="stylesheet" href="base.css">  
+    <script type="text/javascript" src="../libs/physi.js"></script>
+    <script type="text/javascript" src="../libs/jquery.js"></script>	    
+    <script type="text/javascript" src="script.js"></script>    
+    <script type="text/javascript" src="MyPhysiScene.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			document.addEventListener('keydown', function( ev ) {
+				switch ( ev.keyCode ) {
+					case 49: // 1
+						scene.nivel = 0;
+						scene.mostrarMensaje(2);
+						scene.sceneReset();
+						break;
+					case 50: // 2
+						scene.nivel = 1;
+						scene.mostrarMensaje(3);
+						scene.sceneReset();
+						break;
+					case 82: // r
+						scene.sceneReset();
+						break;
+					case 87: // w
+						scene.pulsarW = true;
+						break;
+					case 65: // a
+						scene.pulsarA = true;
+						break;
+					case 68: // d
+						scene.pulsarD = true;
+						break;
+					case 83: // s
+						scene.pulsarS = true;
+						break;
+					case 32: //espacio
+						scene.pulsarEspacio = true;
+						break;
+				}
+			});
+			document.addEventListener('keyup', function( ev ) {
+				switch ( ev.keyCode ) {
+					case 87: // w
+						scene.pulsarW = false;
+						break;
+					case 65: // a
+						scene.pulsarA = false; 
+						break;
+					case 68: // d
+						scene.pulsarD = false;
+						break;
+					case 83: // s
+						scene.pulsarS = false;
+						break;
+				}
+			});
+
+			var btn = document.getElementById("info");
+			var modal = document.getElementById("myModal");
+			var span = document.getElementsByClassName("close")[0];
+						    
+			btn.onclick = function(){
+				modal.style.display = "block";
+			}
+
+			span.onclick = function() {
+				modal.style.display = "none";
+			}
+
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+		});
+	</script>
+    <style>
+        body{
+            margin: 0;
+            overflow: hidden; 
+        }
+    </style>
+</head>
+<body>
+  <button type="button" id="info">Informacion</button>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <br>
+      <br>
+      <br>
+      Controles:
+      <ul>
+        <li>W - Desplazarse hacia delante
+        <li>A - Girar hacia la izquierda
+        <li>S - Desaplzarse hacia atras
+        <li>D - Girar hacia la derecha
+        <li>Barra espaciadora - Saltar
+        <li>R - Resetar juego
+        <li>1 - Nivel 1
+        <li>2 - Nivel 2
+      </ul>
+      Para cerrar el panel de ayuda haz click en la pantalla. 
+      ¡Disfruta del juego!
+    </div>
+  </div>
+<!-- Div which will hold the Output -->
+<div id="WebGL-output">
+</div>
+</body>
+</html>
